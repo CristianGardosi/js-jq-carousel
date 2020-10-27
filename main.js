@@ -3,6 +3,7 @@
 // ***********************************************************
 
 $(document).ready( function () {
+    // MOUSE Scorro la slider di immagini cliccando con il mouse l'apposita freccetta
 
     // Come prima cosa vado a targhettizzare gli elementi che mi permettono di passare da una slide all'altra ovvero PREV e NEXT
     $('.prev').click( function() {
@@ -11,6 +12,19 @@ $(document).ready( function () {
 
     $('.next').click( function() {
         nextPrevImg('next');
+    });
+
+    // KEYBOARD Scorro la slider di immagini con le frecce da tastiera
+    $(document).keydown( function(event) {
+
+        if (event.keyCode === 37) {
+            nextPrevImg('prev');
+        }
+
+        else if (event.keyCode === 39) {
+            nextPrevImg('next');
+        }
+
     });
 
 }); 
@@ -43,7 +57,7 @@ function nextPrevImg(direction) {
         }
     }
         // NEXT lavoro con if nella casistica next per img e i rendendo active non più l'immagine e il cerchio di partenza, ma la/il successiva/o e cosi via ad ogni click su next
-    if ( direction === 'next' ) {
+    else if ( direction === 'next' ) {
         if ( activeImg.hasClass('last') ) {
             $('.images img.first').addClass('active');
         }
